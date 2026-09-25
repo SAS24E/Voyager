@@ -3,6 +3,7 @@
 *.d
 *.dSYM/
 *.exe
+*.vscode
 .DS_Store
 /main
 /run
