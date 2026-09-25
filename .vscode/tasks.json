@@ -2,14 +2,13 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: clang build active file",
-            "command": "/usr/bin/clang++",
+            "label": "C/C++: g++.exe build active file",
+            "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
             "args": [
-                "-fcolor-diagnostics",
-                "-fansi-escape-codes",
+                "-fdiagnostics-color=always",
                 "-g",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "${workspaceFolder}/Player/Player.cpp",
                 "${workspaceFolder}/Inventory/Inventory.cpp",
                 "${workspaceFolder}/Utility/Utility.cpp",
@@ -19,7 +18,7 @@
                 "${workspaceFolder}/main.cpp"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "C:\\msys64\\ucrt64\\bin"
             },
             "problemMatcher": [
                 "$gcc"
