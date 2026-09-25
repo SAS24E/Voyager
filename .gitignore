@@ -1,0 +1,9 @@
+
+.vscode/
+*.o
+*.obj
+*.d
+*.dSYM/
+.DS_Store
+/main
+/run
