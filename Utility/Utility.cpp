@@ -13,7 +13,8 @@ void Utility::handlePlayerChoice(Player &player, GameEngine &gameEngine, bool &g
     log("1. Explore the next room");
     log("2. Check your inventory");
     log("3. Exit the game");
-    int option;
+    int option; // we need to reset option after each loop to avoid infinite loop if user enters invalid option.
+    option = 0; // reset option to avoid infinite loop if user enters invalid option.
     std::cin >> option;
     switch (option)
     {
@@ -29,12 +30,11 @@ void Utility::handlePlayerChoice(Player &player, GameEngine &gameEngine, bool &g
     default:
         log("Invalid option.");
         break;
-    }
+    }       
 
 }
 
 int Utility::generateRandomNumber(int min, int max){
     int randomNumber = rand() % (max - min + 1) + min; 
-    log("Random number generated: " + std::to_string(randomNumber));
     return randomNumber;
 }

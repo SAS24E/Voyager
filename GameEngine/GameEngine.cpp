@@ -18,16 +18,13 @@ GameEngine::GameEngine()
 void GameEngine::exploreNextRoom(Player &player)
 {
     log("You explore the next room...");
-    // we're going to call generate enemy here so each room has an enemy. 
     Enemy enemy;
     for (int i = 0; i < rooms.size(); i++)
     {
         Room currentRoom = rooms[i];
-    randomEnemyGeneration(enemy);
-    engageCombat(player, enemy);
         log("You enter the " + std::string(currentRoom.getName()) + ": " + currentRoom.getDescription());
-        randomEnemyGeneration(enemy);
-        engageCombat(player, enemy);
+        randomEnemyGeneration(enemy); // Should be called elsewhere, but for now it's here to test the combat system.
+        engageCombat(player, enemy); // Should be called elsewhere, but for now it's here to test the combat system.
         break;
     }
 }
