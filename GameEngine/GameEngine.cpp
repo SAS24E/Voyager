@@ -23,10 +23,12 @@ void GameEngine::exploreNextRoom(Player &player)
     {
         Room currentRoom = rooms[i];
         log("You enter the " + std::string(currentRoom.getName()) + ": " + currentRoom.getDescription());
-        randomEnemyGeneration(enemy); // Should be called elsewhere, but for now it's here to test the combat system.
-        engageCombat(player, enemy); // Should be called elsewhere, but for now it's here to test the combat system.
         break;
     }
+    // is this the logical spot to call roomActionMenu? I think so, we can pass in the player, gameEngine, and enemy to the function.
+    randomEnemyGeneration(enemy);
+    roomActionMenu(player, *this, enemy); // we can pass in the player, gameEngine, and enemy to the function.
+
 }
 
 void GameEngine::engageCombat(Player &player, Enemy &enemy)
@@ -68,4 +70,19 @@ void GameEngine::randomEnemyGeneration(Enemy& enemy){
             break;
     }
 
+}
+
+void GameEngine::fleeFromCombat(Player& player, Enemy& enemy){
+    int fleeChance = Utility::generateRandomNumber(1, 100);
+    if (fleeChance <= 50) // 50% chance to successfully flee
+    {
+        log("You successfully fled from the enemy!");
+    }
+    else
+    {
+        log("You failed to flee! The enemy attacks you.");
+        int enemyDamage = Utility::generateRandomNumber(1, 5);
+        player.takeDamage(enemyDamage);
+        log("The enemy deals " + std::to_string(enemyDamage) + " damage to you.");
+    }
 }

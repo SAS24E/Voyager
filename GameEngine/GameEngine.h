@@ -13,6 +13,7 @@ class GameEngine {
         void exploreNextRoom(Player& player);
         void randomEnemyGeneration(Enemy& enemy);
         void engageCombat(Player& player, Enemy& enemy); 
+        void fleeFromCombat(Player& player, Enemy& enemy); 
 
 
 };

@@ -18,6 +18,7 @@ int main(){
     log("You hear a clear voice in your head...");
     log("Find me...." + player.getUserName());
     while (gameRunning) {
-        handlePlayerChoice(player, gameEngine, gameRunning); 
+        handlePlayerChoice(player, gameEngine, gameRunning);
+        
     }
 }
