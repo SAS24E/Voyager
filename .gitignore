@@ -1,8 +1,8 @@
-*.vscode
 *.o
 *.obj
 *.d
 *.dSYM/
+*.exe
 .DS_Store
 /main
 /run

@@ -9,7 +9,7 @@
       "stopAtEntry": false,
       "externalConsole": true,
       "cwd": "c:/Users/alex_/Repos/Voyager-C++/Voyager",
-      "program": "c:/Users/alex_/Repos/Voyager-C++/Voyager/build/Debug/outDebug",
+      "program": "c:/Users/alex_/Repos/Voyager-C++/Voyager/voyager.exe",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
