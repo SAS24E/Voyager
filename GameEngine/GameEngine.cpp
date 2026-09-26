@@ -1,7 +1,9 @@
 #include "GameEngine.h"
-using namespace Utility;
+#include "../ConsoleUI/ConsoleUI.h"
 
-GameEngine::GameEngine()
+using namespace ConsoleUI;
+
+GameEngine::GameEngine() : currentRoomIndex(0)
 {
 
     rooms.push_back(Room("Hallway", "A long dark hallway with flickering lights and eerie shadows"));
@@ -17,18 +19,19 @@ GameEngine::GameEngine()
 
 void GameEngine::exploreNextRoom(Player &player)
 {
+
     log("You explore the next room...");
     Enemy enemy;
-    for (int i = 0; i < rooms.size(); i++)
-    {
-        Room currentRoom = rooms[i];
-        log("You enter the " + std::string(currentRoom.getName()) + ": " + currentRoom.getDescription());
-        break;
+    if(currentRoomIndex >= rooms.size()){
+        log("There are no more rooms left to explore.");
+        return;
     }
-    // is this the logical spot to call roomActionMenu? I think so, we can pass in the player, gameEngine, and enemy to the function.
+    
+    Room& currentRoom = rooms[currentRoomIndex];
+    log("You enter the " + currentRoom.getName() + ": " + currentRoom.getDescription());
+    currentRoomIndex++;
     randomEnemyGeneration(enemy);
-    roomActionMenu(player, *this, enemy); // we can pass in the player, gameEngine, and enemy to the function.
-
+    ConsoleUI::roomActionMenu(player, *this, enemy);
 }
 
 void GameEngine::engageCombat(Player &player, Enemy &enemy)

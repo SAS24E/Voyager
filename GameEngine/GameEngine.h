@@ -4,10 +4,11 @@
 #include "../Enemy/Enemy.h"
 #include "../Utility/Utility.h"
 #include <vector>
+
 class GameEngine {
     private:
         std::vector<Room> rooms;
-
+        int currentRoomIndex = 0;
     public:
         GameEngine();
         void exploreNextRoom(Player& player);

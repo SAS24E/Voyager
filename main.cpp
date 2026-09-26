@@ -3,8 +3,9 @@
 #include "Inventory/Inventory.h"
 #include "Utility/Utility.h"
 #include "GameEngine/GameEngine.h"
+#include "ConsoleUI/ConsoleUI.h"
 
-using namespace Utility;
+using namespace ConsoleUI;
 
 int main(){
     Player player; 
