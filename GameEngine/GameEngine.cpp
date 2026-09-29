@@ -51,6 +51,7 @@ void GameEngine::engageCombat(Player &player, Enemy &enemy)
     if (player.getHealth() <= 0)
     {
         log("You have been defeated!");
+        log("Game Over."); // here we will exit the program since voyager is now DEAD....
     }
     else
     {

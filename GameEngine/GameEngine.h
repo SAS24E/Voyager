@@ -7,14 +7,14 @@
 
 class GameEngine {
     private:
-        std::vector<Room> rooms;
+        std::vector<Room> rooms; 
         int currentRoomIndex = 0;
     public:
         GameEngine();
         void exploreNextRoom(Player& player);
         void randomEnemyGeneration(Enemy& enemy);
         void engageCombat(Player& player, Enemy& enemy); 
-        void fleeFromCombat(Player& player, Enemy& enemy); 
+        void fleeFromCombat(Player& player, Enemy& enemy);
 
 
 };

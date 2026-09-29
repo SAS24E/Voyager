@@ -5,10 +5,10 @@ Room::Room(std::string name, std::string description) {
     this->description = description;
 }
 
-std::string Room::getName(){
+std::string Room::getName() const{
     return name;
 }
 
-std::string Room::getDescription(){
+std::string Room::getDescription() const{
     return description;
 }

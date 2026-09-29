@@ -4,12 +4,10 @@
 class Room{
     private:
         std::string name;
-        std::string description;
+        std::string description; 
 
     public:
-        Room(std::string name, std::string description);
-        std::string getName();
-        std::string getDescription();
-    public:
-
+        Room(std::string name, std::string description) : name(name), description(description) {};
+        std::string getName() const;
+        std::string getDescription() const;
 };
