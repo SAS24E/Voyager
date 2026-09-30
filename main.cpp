@@ -20,6 +20,5 @@ int main(){
     log("Find me...." + player.getUserName());
     while (gameRunning) {
         handlePlayerChoice(player, gameEngine, gameRunning);
-        
     }
 }

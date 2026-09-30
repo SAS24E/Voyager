@@ -46,18 +46,19 @@ void ConsoleUI::roomActionMenu(Player &player, GameEngine &gameEngine, Enemy &en
     switch (option)
     {
     case 1:
-            gameEngine.engageCombat(player, enemy); // we can call engageCombat in GameEngine here.
+            gameEngine.engageCombat(player, enemy);
             break;
         case 2:
             log("You flee from the enemy!");
-            gameEngine.fleeFromCombat(player, enemy); // create this now....
+            gameEngine.fleeFromCombat(player, enemy);
             break;
         case 3:
             log("You check your inventory!");
             player.showInventory();
             break;
         case 4:
-            log("You would use an item here if I implemented it!...."); // we will think about how to implement this later, maybe we can call player.useItem() here. or we use inventory class to handle this.
+            log("You would use an item here if I implemented it!...."); 
+            //player.useItem();
             break;
         default:
             log("Invalid option.");
