@@ -1,9 +1,5 @@
 #include "Room.h"
-
-Room::Room(std::string name, std::string description) {
-    this->name = name;
-    this->description = description;
-}
+#include <string>
 
 std::string Room::getName() const{
     return name;
