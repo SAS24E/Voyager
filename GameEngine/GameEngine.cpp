@@ -3,40 +3,49 @@
 
 using namespace ConsoleUI;
 
-GameEngine::GameEngine() : currentRoomIndex(0)
+GameEngine::GameEngine() : currentRoomId(0)
 {
 
-    rooms.push_back(Room("Hallway", "A long dark hallway with flickering lights and eerie shadows"));
+    rooms.emplace_back(0, "Hallway", "A long dark hallway with flickering lights and eerie shadows");
 
-    rooms.push_back(Room("Dark Room", "A small dark room with a single candle providing minimal light"));
+    rooms.emplace_back(1, "Dark Room", "A small dark room with a single candle providing minimal light");
 
-    rooms.push_back(Room("Library", "A dimly lit library with towering bookshelves and a sense of ancient knowledge"));
+    rooms.emplace_back(2, "Library", "A dimly lit library with towering bookshelves and a sense of ancient knowledge");
 
-    rooms.push_back(Room("Secret Chamber", "A hidden chamber with ancient artifacts and mysterious inscriptions"));
+    rooms.emplace_back(3, "Secret Chamber", "A hidden chamber with ancient artifacts and mysterious inscriptions");
 
-    rooms.push_back(Room("Final Chamber", "A grand chamber with a mysterious altar and glowing runes"));
+    rooms.emplace_back(4, "Final Chamber", "A grand chamber with a mysterious altar and glowing runes");
+    // rooms is a vector, we are accessing it by index and then calling addExit to that vector passing in a enum class North (our key) and then our value 1 to it. ?
+    rooms[0].addExit(Direction::North, 1); // Room 0 hallway has an exit to the north which is a enterance to 1 Dark Room.
+    rooms[1].addExit(Direction::South, 0); // return to hallway.
+    rooms[1].addExit(Direction::East, 2);  // Room 1(Dark Room) has an exit East that goes to Library
+    rooms[2].addExit(Direction::West, 1);  // Room 2(Library) has an exit West that goes to Dark Room
+    rooms[2].addExit(Direction::North, 3); // Room 2(Library) has an exit North that goes to Secret Chamber
+    rooms[3].addExit(Direction::South, 2); // Room 3(Secret Chamber) has an exit South that goes to Library
+
+    rooms[3].addExit(Direction::East, 4); // Room 3(Secret Chamber) has an exit East that goes to Final Chamber
+    rooms[4].addExit(Direction::West, 3); // Room 4(Final Chamber) has an exit West that goes to Secret Chamber
 }
 
-void GameEngine::exploreNextRoom(Player &player)
+void GameEngine::movePlayer(Direction direction)
 {
-
-    log("You explore the next room...");
-    Enemy enemy;
-    if(currentRoomIndex >= rooms.size()){
-        log("There are no more rooms left to explore.");
+    Room &currentRoom = rooms[currentRoomId];
+    int nextRoomId = currentRoom.getExit(direction);
+    if (nextRoomId == -1)
+    {
+        log("You cannot go that way.");
         return;
     }
-    
-    Room& currentRoom = rooms[currentRoomIndex];
-    log("You enter the " + currentRoom.getName() + ": " + currentRoom.getDescription());
-    currentRoomIndex++;
-    randomEnemyGeneration(enemy);
-    ConsoleUI::roomActionMenu(player, *this, enemy);
+
+    currentRoomId = nextRoomId;
+
+    Room &nextRoom = rooms[currentRoomId];
+    log("You enter the " + nextRoom.getName() + ": " + nextRoom.getDescription());
 }
 
 void GameEngine::engageCombat(Player &player, Enemy &enemy)
 {
-    log ("You encounter a " + enemy.getName() + " with " + std::to_string(enemy.getHealth()) + " health and " + std::to_string(enemy.getPower()) + " power.");
+    log("You encounter a " + enemy.getName() + " with " + std::to_string(enemy.getHealth()) + " health and " + std::to_string(enemy.getPower()) + " power.");
     log("You engage in combat!");
     while (player.getHealth() > 0 && enemy.getHealth() > 0)
     {
@@ -59,24 +68,25 @@ void GameEngine::engageCombat(Player &player, Enemy &enemy)
     }
 }
 
-void GameEngine::randomEnemyGeneration(Enemy& enemy){
+void GameEngine::randomEnemyGeneration(Enemy &enemy)
+{
     int enemyType = Utility::generateRandomNumber(1, 3);
     switch (enemyType)
     {
-        case 1:
-            enemy = Enemy("Goblin", 20, 5);
-            break;
-        case 2:
-            enemy = Enemy("Orc", 30, 10);
-            break;
-        case 3:
-            enemy = Enemy("Troll", 40, 15);
-            break;
+    case 1:
+        enemy = Enemy("Goblin", 20, 5);
+        break;
+    case 2:
+        enemy = Enemy("Orc", 30, 10);
+        break;
+    case 3:
+        enemy = Enemy("Troll", 40, 15);
+        break;
     }
-
 }
 
-void GameEngine::fleeFromCombat(Player& player, Enemy& enemy){
+void GameEngine::fleeFromCombat(Player &player, Enemy &enemy)
+{
     int fleeChance = Utility::generateRandomNumber(1, 100);
     if (fleeChance <= 50) // 50% chance to successfully flee
     {
