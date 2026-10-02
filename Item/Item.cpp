@@ -1,13 +1,11 @@
 #include "Item.h"
 
-
-
-std::string Item::getName() const{
+std::string Item::getName() const
+{
     return name;
 }
 
-std::string Item::getDescription() const{
+std::string Item::getDescription() const
+{
     return description;
 }
-
-

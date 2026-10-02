@@ -5,19 +5,21 @@
 class Log
 {
 public:
-
-enum Level {
-    LevelError = 0, LevelWarning = 1, LevelInfo = 2
-};
+    enum Level
+    {
+        LevelError = 0,
+        LevelWarning = 1,
+        LevelInfo = 2
+    };
     Level m_loglevel = LevelInfo;
 
 private:
     int m_loglevelWarning;
 
 public:
-   void log(const std::string& message);
+    void log(const std::string &message);
     void setLevel(Level logLevel);
-    void warn(const std::string& message);
-    void error(const std::string& message);
-    void info(const std::string& message);
+    void warn(const std::string &message);
+    void error(const std::string &message);
+    void info(const std::string &message);
 };

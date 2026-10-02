@@ -8,8 +8,9 @@
 
 using namespace ConsoleUI;
 
-int main(){
-    Player player; 
+int main()
+{
+    Player player;
     GameEngine gameEngine;
     Log Log; // since log is static we don't need to create an instance of it however it will allow us to call the log function using the instance.
     bool gameRunning = true;
@@ -18,8 +19,8 @@ int main(){
     Log.log("Your mind is foggy, but you remember your name is...");
     player.setUserName();
 
-    // Unit test for log class 
-    
+    // Unit test for log class
+
     // Log.setLevel(Log::LevelError);
     // Log.warn("This is a warning message.");
     // Log.info("This is an info message.");
@@ -27,7 +28,8 @@ int main(){
 
     Log.log("You hear a clear voice in your head...");
     Log.log("Find me...." + player.getUserName());
-    while (gameRunning) {
+    while (gameRunning)
+    {
         handlePlayerChoice(player, gameEngine, gameRunning);
     }
 }
