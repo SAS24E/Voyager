@@ -6,15 +6,15 @@ using namespace ConsoleUI;
 GameEngine::GameEngine() : currentRoomId(0)
 {
 
-    rooms.emplace_back(0, "Hallway", "A long dark hallway with flickering lights and eerie shadows");
+    rooms.emplace_back("Hallway", "A long dark hallway with flickering lights and eerie shadows");
 
-    rooms.emplace_back(1, "Dark Room", "A small dark room with a single candle providing minimal light");
+    rooms.emplace_back("Dark Room", "A small dark room with a single candle providing minimal light");
 
-    rooms.emplace_back(2, "Library", "A dimly lit library with towering bookshelves and a sense of ancient knowledge");
+    rooms.emplace_back("Library", "A dimly lit library with towering bookshelves and a sense of ancient knowledge");
 
-    rooms.emplace_back(3, "Secret Chamber", "A hidden chamber with ancient artifacts and mysterious inscriptions");
+    rooms.emplace_back("Secret Chamber", "A hidden chamber with ancient artifacts and mysterious inscriptions");
 
-    rooms.emplace_back(4, "Final Chamber", "A grand chamber with a mysterious altar and glowing runes");
+    rooms.emplace_back("Final Chamber", "A grand chamber with a mysterious altar and glowing runes");
     // rooms is a vector, we are accessing it by index and then calling addExit to that vector passing in a enum class North (our key) and then our value 1 to it. ?
     rooms[0].addExit(Direction::North, 1); // Room 0 hallway has an exit to the north which is a enterance to 1 Dark Room.
     rooms[1].addExit(Direction::South, 0); // return to hallway.
