@@ -15,13 +15,13 @@ public:
     std::string getUserName();
     int getHealth();
     int getGold();
-    void showInventory();
+    void showInventory() const;
     // setters
     void setUserName();
     void takeDamage(int amount);
     void heal(int amount);
     void addGold(int amount);
     void spendGold(int amount);
-    void addItem(const Item& item);
+    void addItem(const Item &item);
     void removeItem(const std::string &itemName);
 };

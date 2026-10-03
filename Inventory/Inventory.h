@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
-// so we can make an Item type enum class for the inventory
+
 enum class ItemType
 {
     Weapon,

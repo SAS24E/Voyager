@@ -27,6 +27,12 @@ void Inventory::removeItem(const std::string &itemName)
 
 void Inventory::showInventory() const
 {
+    if (items.empty())
+    {
+        std::cout << "Your inventory is empty." << std::endl;
+        return;
+    }
+    std::cout << "Your inventory contains:" << std::endl;
     for (int i = 0; i < items.size(); i++)
     {
         std::cout << items[i].name << std::endl;

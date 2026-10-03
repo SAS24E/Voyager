@@ -53,7 +53,7 @@ void Player::addItem(const Item &item)
     inventory.addItem(item);
 }
 
-void Player::showInventory()
+void Player::showInventory() const
 {
     inventory.showInventory();
 }
