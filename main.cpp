@@ -19,6 +19,13 @@ int main()
     Log.log("Your mind is foggy, but you remember your name is...");
     player.setUserName();
 
+    // Unit test for inventory class
+    player.addItem({"Sword", ItemType::Weapon, ItemRarity::Common, ItemEffect::StrengthBoost, 5});
+
+    player.showInventory();
+
+
+
     // Unit test for log class
 
     // Log.setLevel(Log::LevelError);

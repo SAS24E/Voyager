@@ -22,4 +22,6 @@ public:
     void heal(int amount);
     void addGold(int amount);
     void spendGold(int amount);
+    void addItem(const Item& item);
+    void removeItem(const std::string &itemName);
 };

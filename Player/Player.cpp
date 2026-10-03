@@ -17,11 +17,6 @@ int Player::getGold()
     return gold;
 }
 
-void Player::showInventory()
-{
-    inventory.showInventory();
-}
-
 // setters
 void Player::setUserName()
 {
@@ -47,4 +42,18 @@ void Player::addGold(int amount)
 void Player::spendGold(int amount)
 {
     gold -= amount;
+}
+void Player::removeItem(const std::string &itemName)
+{
+    inventory.removeItem(itemName);
+}
+
+void Player::addItem(const Item &item)
+{
+    inventory.addItem(item);
+}
+
+void Player::showInventory()
+{
+    inventory.showInventory();
 }
