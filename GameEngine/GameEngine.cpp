@@ -27,6 +27,29 @@ GameEngine::GameEngine() : currentRoomId(0)
     rooms[4].addExit(Direction::West, 3); // Room 4(Final Chamber) has an exit West that goes to Secret Chamber
 }
 
+// when the player moves in a certain direction, we need to check if there is an exit in that direction and if so, move the player to the next room. Instead lets make a function that allow us to serve the user the only true exits. 
+
+void GameEngine::showAvailableExits()
+{
+    Room &currentRoom = rooms[currentRoomId];
+    if (currentRoom.getExit(Direction::North) != -1)
+    {
+        log("1. North");
+    }
+    if (currentRoom.getExit(Direction::South) != -1)
+    {
+        log("2. South");
+    }
+    if (currentRoom.getExit(Direction::East) != -1)
+    {
+        log("3. East");
+    }
+    if (currentRoom.getExit(Direction::West) != -1)
+    {
+        log("4. West");
+    }
+}
+
 void GameEngine::movePlayer(Direction direction)
 {
     Room &currentRoom = rooms[currentRoomId];

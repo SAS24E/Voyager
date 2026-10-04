@@ -22,12 +22,9 @@ void ConsoleUI::handlePlayerChoice(Player &player, GameEngine &gameEngine, bool 
     {
     case 1:
     {
-        log("Which direction would you like to travel?");
-        log("1. North");
-        log("2. South");
-        log("3. East");
-        log("4. West");
-
+        log("Choose a direction to travel:");
+        gameEngine.showAvailableExits();
+        
         int directionOption = 0;
         std::cin >> directionOption;
 

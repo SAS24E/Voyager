@@ -16,6 +16,8 @@ void Room::addExit(Direction direction, int roomId)
     exits[direction] = roomId; // Direction gives us the direction to add (key) and the room ID (value)
 }
 
+
+
 int Room::getExit(Direction direction) const
 {
     // exits.find(direction) .find is used to search for a specific key in the map
