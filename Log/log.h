@@ -1,6 +1,9 @@
 
 #include <iostream>
 #include <string>
+#include <thread>
+#include <chrono>
+
 // This is a rather poor class for logging messages with different severity levels.
 class Log
 {
@@ -15,9 +18,10 @@ public:
 
 private:
     int m_loglevelWarning;
+    static const int msDelay = 10;
 
 public:
-    void log(const std::string &message);
+    static void log(const std::string &message);
     void setLevel(Level logLevel);
     void warn(const std::string &message);
     void error(const std::string &message);

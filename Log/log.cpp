@@ -1,8 +1,26 @@
 #include "log.h"
 
-void Log::log(const std::string &message)
+void  Log::log(const std::string &message)
 {
-    std::cout << message << std::endl;
+    for (char c : message)
+    {
+        std::cout << c << std::flush;
+        if (c == '.' || c == '!' || c == '?')
+        {
+            // Add a longer delay after punctuation
+            std::this_thread::sleep_for(std::chrono::milliseconds(Log::msDelay * 8));
+        }
+        else if (c == ',' || c == ';' || c == ':')
+        // medium pause for commas, semicolons, and colons
+        {
+            std::this_thread::sleep_for(std::chrono::milliseconds(Log::msDelay * 4));
+        }
+        else
+        {
+            std::this_thread::sleep_for(std::chrono::milliseconds(Log::msDelay * 2));
+        }
+    }
+    std::cout << std::endl;
 }
 
 void Log::setLevel(Level logLevel)

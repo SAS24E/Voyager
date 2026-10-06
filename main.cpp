@@ -12,26 +12,26 @@ int main()
 {
     Player player;
     GameEngine gameEngine;
-    Log Log; // since log is static we don't need to create an instance of it however it will allow us to call the log function using the instance.
+    Log Log;
+
     bool gameRunning = true;
 
     Log.log("You awake in a dark room. You have no memory of how you got here. You see a door in front of you.");
     Log.log("Your mind is foggy, but you remember your name is...");
     player.setUserName();
-
-    // Unit test for inventory class
-    player.addItem({"Sword", ItemType::Weapon, ItemRarity::Common, ItemEffect::StrengthBoost, 5});
+    Log.log("You hear a loud screech from the darkness.");
+    Log.log("The screech echoes through the room, making you feel uneasy.");
+    Log.log("You feel a chill run down your spine.");
+    Log.log("You see a skeleton in the corner of the room.");
+    Log.log("The skeleton seems to be a fallen warrior. He is holding a sword and a shield.");
+    Log.log("These may come in handy in finding your way out.");
+    player.addItem({"Sword", ItemType::Weapon, ItemRarity::Common, ItemEffect::StrengthBoost, ItemStrength::Moderate});
+    player.addItem({"Shield", ItemType::Armor, ItemRarity::Common, ItemEffect::DefenseBoost, ItemStrength::Moderate});
+    Log.log("You also find a health potion and a mana potion in the skeletons bag.");
+    player.addItem({"Health Potion", ItemType::Potion, ItemRarity::Common, ItemEffect::HealthBoost, ItemStrength::Weak});
+    player.addItem({"Mana Potion", ItemType::Potion, ItemRarity::Common, ItemEffect::ManaBoost, ItemStrength::Weak});
 
     player.showInventory();
-
-
-
-    // Unit test for log class
-
-    // Log.setLevel(Log::LevelError);
-    // Log.warn("This is a warning message.");
-    // Log.info("This is an info message.");
-    // Log.error("This is an error message.");
 
     Log.log("You hear a clear voice in your head...");
     Log.log("Find me...." + player.getUserName());

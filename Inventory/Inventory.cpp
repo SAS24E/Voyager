@@ -1,11 +1,13 @@
 #include "Inventory.h"
 #include <iostream>
 #include <algorithm>
+#include "../Log/log.h"
+
 
 void Inventory::addItem(const Item &item)
 {
     items.push_back(item);
-    std::cout << item.name << " was added to your inventory." << std::endl;
+    Log::log(item.name + " was added to your inventory.");
 }
 
 void Inventory::removeItem(const std::string &itemName)

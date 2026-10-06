@@ -4,7 +4,7 @@
 
 enum class ItemType
 {
-    Weapon,
+    Weapon = 0,
     Armor,
     Potion,
     Miscellaneous
@@ -12,7 +12,7 @@ enum class ItemType
 
 enum class ItemRarity
 {
-    Common,
+    Common = 0,
     Uncommon,
     Rare,
     Epic,
@@ -21,11 +21,19 @@ enum class ItemRarity
 
 enum class ItemEffect
 {
-    None,
+    None = 0,
     HealthBoost,
     ManaBoost,
     StrengthBoost,
     DefenseBoost
+};
+
+enum class ItemStrength
+{
+    Weak = 0,
+    Moderate,
+    Strong,
+    VeryStrong
 };
 
 struct Item {
@@ -33,7 +41,7 @@ struct Item {
     ItemType type;
     ItemRarity rarity;
     ItemEffect effect;
-    int effectAmount;
+    ItemStrength strength;
 };
 
 class Inventory
