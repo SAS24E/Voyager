@@ -14,9 +14,10 @@ private:
 public:
     GameEngine();
 
-    void movePlayer(Direction direction);
+    bool movePlayer();
     void randomEnemyGeneration(Enemy &enemy);
     void engageCombat(Player &player, Enemy &enemy);
     void fleeFromCombat(Player &player, Enemy &enemy);
-    void showAvailableExits();
+    const Room &getCurrentRoom() const;
+    bool canMoveForward() const;
 };

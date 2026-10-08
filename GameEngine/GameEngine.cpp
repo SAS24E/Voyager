@@ -16,54 +16,34 @@ GameEngine::GameEngine() : currentRoomId(0)
 
     rooms.emplace_back("Final Chamber", "A grand chamber with a mysterious altar and glowing runes");
     // rooms is a vector, we are accessing it by index and then calling addExit to that vector passing in a enum class North (our key) and then our value 1 to it. ?
-    rooms[0].addExit(Direction::North, 1); // Room 0 hallway has an exit to the north which is a enterance to 1 Dark Room.
-    rooms[1].addExit(Direction::South, 0); // return to hallway.
-    rooms[1].addExit(Direction::East, 2);  // Room 1(Dark Room) has an exit East that goes to Library
-    rooms[2].addExit(Direction::West, 1);  // Room 2(Library) has an exit West that goes to Dark Room
-    rooms[2].addExit(Direction::North, 3); // Room 2(Library) has an exit North that goes to Secret Chamber
-    rooms[3].addExit(Direction::South, 2); // Room 3(Secret Chamber) has an exit South that goes to Library
-
-    rooms[3].addExit(Direction::East, 4); // Room 3(Secret Chamber) has an exit East that goes to Final Chamber
-    rooms[4].addExit(Direction::West, 3); // Room 4(Final Chamber) has an exit West that goes to Secret Chamber
+    // Rooms are visited in order; travel only moves to the next room.
 }
 
 // when the player moves in a certain direction, we need to check if there is an exit in that direction and if so, move the player to the next room. Instead lets make a function that allow us to serve the user the only true exits. 
 
-void GameEngine::showAvailableExits()
+const Room &GameEngine::getCurrentRoom() const
 {
-    Room &currentRoom = rooms[currentRoomId];
-    if (currentRoom.getExit(Direction::North) != -1)
-    {
-        log("1. North");
-    }
-    if (currentRoom.getExit(Direction::South) != -1)
-    {
-        log("2. South");
-    }
-    if (currentRoom.getExit(Direction::East) != -1)
-    {
-        log("3. East");
-    }
-    if (currentRoom.getExit(Direction::West) != -1)
-    {
-        log("4. West");
-    }
+    return rooms[currentRoomId];
 }
 
-void GameEngine::movePlayer(Direction direction)
+bool GameEngine::canMoveForward() const
 {
-    Room &currentRoom = rooms[currentRoomId];
-    int nextRoomId = currentRoom.getExit(direction);
-    if (nextRoomId == -1)
+    return currentRoomId + 1 < static_cast<int>(rooms.size());
+}
+
+bool GameEngine::movePlayer()
+{
+    if (!canMoveForward())
     {
-        log("You cannot go that way.");
-        return;
+        log("There is nowhere else to go.");
+        return false;
     }
 
-    currentRoomId = nextRoomId;
+    ++currentRoomId;
 
     Room &nextRoom = rooms[currentRoomId];
     log("You enter the " + nextRoom.getName() + ": " + nextRoom.getDescription());
+    return true;
 }
 
 void GameEngine::engageCombat(Player &player, Enemy &enemy)
