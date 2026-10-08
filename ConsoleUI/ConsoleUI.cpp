@@ -27,7 +27,7 @@ void ConsoleUI::handlePlayerChoice(Player &player, GameEngine &gameEngine, bool 
         
         int directionOption = 0;
         std::cin >> directionOption;
-
+// id like to improve this to where when a direction is not a valid option we make the options 1 and 2 if there is only say south and west available. not 3 and 4... // perhaps instead of allowing backtracking we only allow the player to move forward...that way we can keep it story driven rather than letting players choose their routes. 
         switch (directionOption)
         {
         case 1:

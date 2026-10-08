@@ -1,6 +1,6 @@
 #include "log.h"
 
-void  Log::log(const std::string &message)
+void Log::log(const std::string &message)
 {
     for (char c : message)
     {

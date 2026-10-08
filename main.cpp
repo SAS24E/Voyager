@@ -5,6 +5,8 @@
 #include "GameEngine/GameEngine.h"
 #include "ConsoleUI/ConsoleUI.h"
 #include "Log/log.h"
+#include <chrono>
+#include <thread>
 
 using namespace ConsoleUI;
 
@@ -24,7 +26,7 @@ int main()
     Log.log("You feel a chill run down your spine.");
     Log.log("You see a skeleton in the corner of the room.");
     Log.log("The skeleton seems to be a fallen warrior. He is holding a sword and a shield.");
-    Log.log("These may come in handy in finding your way out.");
+    Log.log("You may find these useful in your journey.");
     player.addItem({"Sword", ItemType::Weapon, ItemRarity::Common, ItemEffect::StrengthBoost, ItemStrength::Moderate});
     player.addItem({"Shield", ItemType::Armor, ItemRarity::Common, ItemEffect::DefenseBoost, ItemStrength::Moderate});
     Log.log("You also find a health potion and a mana potion in the skeletons bag.");
@@ -38,5 +40,6 @@ int main()
     while (gameRunning)
     {
         handlePlayerChoice(player, gameEngine, gameRunning);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 }

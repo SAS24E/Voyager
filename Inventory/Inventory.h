@@ -36,7 +36,8 @@ enum class ItemStrength
     VeryStrong
 };
 
-struct Item {
+struct Item
+{
     std::string name;
     ItemType type;
     ItemRarity rarity;
@@ -53,7 +54,7 @@ private:
 public:
     Inventory() : maxSlot(5) {}
 
-    void addItem(const Item& item);
+    void addItem(const Item &item);
     void removeItem(const std::string &itemName);
     void showInventory() const;
 };
