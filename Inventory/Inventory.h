@@ -49,10 +49,9 @@ class Inventory
 {
 private:
     std::vector<Item> items;
-    int maxSlot;
 
 public:
-    Inventory() : maxSlot(5) {}
+    Inventory() = default;
 
     void addItem(const Item &item);
     void removeItem(const std::string &itemName);

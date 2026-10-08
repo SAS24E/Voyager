@@ -5,7 +5,6 @@ class Player;
 class GameEngine;
 class Enemy;
 
-
 namespace ConsoleUI
 {
     void handlePlayerChoice(Player &player, GameEngine &gameEngine, bool &gameRunning);

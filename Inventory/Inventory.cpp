@@ -35,8 +35,8 @@ void Inventory::showInventory() const
         return;
     }
     std::cout << "Your inventory contains:" << std::endl;
-    for (int i = 0; i < items.size(); i++)
+    for (const Item &item : items)
     {
-        std::cout << items[i].name << std::endl;
+        std::cout << item.name << std::endl;
     }
 }

@@ -11,12 +11,10 @@ private:
 
 public:
     Player();
-    // getters
     std::string getUserName();
     int getHealth();
     int getGold();
     void showInventory() const;
-    // setters
     void setUserName();
     void takeDamage(int amount);
     void heal(int amount);

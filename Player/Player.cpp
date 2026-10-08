@@ -3,7 +3,6 @@
 
 Player::Player() : userName(""), health(100), gold(999) {}
 
-// getters
 std::string Player::getUserName()
 {
     return userName;
@@ -17,7 +16,6 @@ int Player::getGold()
     return gold;
 }
 
-// setters
 void Player::setUserName()
 {
     std::cout << "Enter user name: " << std::endl;

@@ -21,28 +21,15 @@ void ConsoleUI::handlePlayerChoice(Player &player, GameEngine &gameEngine, bool 
     switch (option)
     {
     case 1:
-    {
         if (!gameEngine.canMoveForward())
         {
             log("You have reached the end of the path.");
         }
         else
         {
-            log("1. Continue forward");
-            int travelOption = 0;
-            std::cin >> travelOption;
-
-            if (travelOption == 1)
-            {
-                gameEngine.movePlayer();
-            }
-            else
-            {
-                log("Invalid travel option.");
-            }
+            gameEngine.movePlayer();
         }
         break;
-    }
     case 2:
         player.showInventory();
         break;
@@ -59,9 +46,9 @@ void ConsoleUI::roomActionMenu(Player &player, GameEngine &gameEngine, Enemy &en
 {
     log("What would you like to do?");
     log("1. Attack");
-    log("2. Flee"); // add function to gameEngine class
+    log("2. Flee");
     log("3. Check Inventory");
-    log("4. Use Item"); // add function to Player class.
+    log("4. Use Item");
     int option = 0;
     std::cin >> option;
     switch (option)
@@ -79,7 +66,6 @@ void ConsoleUI::roomActionMenu(Player &player, GameEngine &gameEngine, Enemy &en
         break;
     case 4:
         log("You would use an item here if I implemented it!....");
-        // player.useItem();
         break;
     default:
         log("Invalid option.");

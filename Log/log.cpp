@@ -7,11 +7,9 @@ void Log::log(const std::string &message)
         std::cout << c << std::flush;
         if (c == '.' || c == '!' || c == '?')
         {
-            // Add a longer delay after punctuation
             std::this_thread::sleep_for(std::chrono::milliseconds(Log::msDelay * 8));
         }
         else if (c == ',' || c == ';' || c == ':')
-        // medium pause for commas, semicolons, and colons
         {
             std::this_thread::sleep_for(std::chrono::milliseconds(Log::msDelay * 4));
         }

@@ -4,7 +4,6 @@
 #include <thread>
 #include <chrono>
 
-// This is a rather poor class for logging messages with different severity levels.
 class Log
 {
 public:
@@ -17,7 +16,6 @@ public:
     Level m_loglevel = LevelInfo;
 
 private:
-    int m_loglevelWarning;
     static const int msDelay = 10;
 
 public:

@@ -5,21 +5,12 @@ using namespace ConsoleUI;
 
 GameEngine::GameEngine() : currentRoomId(0)
 {
-
     rooms.emplace_back("Hallway", "A long dark hallway with flickering lights and eerie shadows");
-
     rooms.emplace_back("Dark Room", "A small dark room with a single candle providing minimal light");
-
     rooms.emplace_back("Library", "A dimly lit library with towering bookshelves and a sense of ancient knowledge");
-
     rooms.emplace_back("Secret Chamber", "A hidden chamber with ancient artifacts and mysterious inscriptions");
-
     rooms.emplace_back("Final Chamber", "A grand chamber with a mysterious altar and glowing runes");
-    // rooms is a vector, we are accessing it by index and then calling addExit to that vector passing in a enum class North (our key) and then our value 1 to it. ?
-    // Rooms are visited in order; travel only moves to the next room.
 }
-
-// when the player moves in a certain direction, we need to check if there is an exit in that direction and if so, move the player to the next room. Instead lets make a function that allow us to serve the user the only true exits. 
 
 const Room &GameEngine::getCurrentRoom() const
 {
@@ -63,7 +54,7 @@ void GameEngine::engageCombat(Player &player, Enemy &enemy)
     if (player.getHealth() <= 0)
     {
         log("You have been defeated!");
-        log("Game Over."); // here we will exit the program since voyager is now DEAD....
+        log("Game Over.");
     }
     else
     {
@@ -88,10 +79,10 @@ void GameEngine::randomEnemyGeneration(Enemy &enemy)
     }
 }
 
-void GameEngine::fleeFromCombat(Player &player, Enemy &enemy)
+void GameEngine::fleeFromCombat(Player &player, Enemy &)
 {
     int fleeChance = Utility::generateRandomNumber(1, 100);
-    if (fleeChance <= 50) // 50% chance to successfully flee
+    if (fleeChance <= 50)
     {
         log("You successfully fled from the enemy!");
     }

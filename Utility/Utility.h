@@ -2,7 +2,7 @@
 #include <string>
 
 class Player;
-class GameEngine; // forward delcare in header allows for us to use the references.
+class GameEngine;
 class Enemy;
 namespace Utility
 {
