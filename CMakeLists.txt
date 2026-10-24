@@ -20,6 +20,7 @@ add_executable(Voyager
     ConsoleUI/ConsoleUI.cpp
     Log/Log.cpp
     Item/Item.cpp
+    Item/ItemFactory.cpp
 )
 
 # Root directory inclusion allows: #include "Item/Item.h", #include "Player/Player.h", etc.

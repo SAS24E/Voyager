@@ -17,6 +17,42 @@ A C++ text-based dungeon crawler built to explore and refine core C++ software a
 
 ---
 
+## 🔨 Building with CMake
+
+From the repository root, configure the project in a separate build directory:
+
+```bash
+cmake -S . -B build
+```
+
+Build the game:
+
+```bash
+cmake --build build
+```
+
+Run the executable:
+
+```bash
+./build/Voyager
+```
+
+After making source changes, rebuild with:
+
+```bash
+cmake --build build
+```
+
+For a clean rebuild, remove only the generated build directory and configure again:
+
+```bash
+rm -rf build
+cmake -S . -B build
+cmake --build build
+```
+
+---
+
 ## 📜 Commit Conventions
 
 To maintain a clean commit history across development, this project follows lightweight Conventional Commits:

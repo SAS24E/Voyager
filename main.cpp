@@ -5,6 +5,7 @@
 #include "GameEngine/GameEngine.h"
 #include "ConsoleUI/ConsoleUI.h"
 #include "Log/Log.h"
+#include "Item/ItemFactory.h"
 #include <chrono>
 #include <thread>
 
@@ -27,7 +28,7 @@ int main()
     Log.log("You see a skeleton in the corner of the room.");
     Log.log("The skeleton seems to be a fallen warrior. He is holding a sword and a shield.");
     Log.log("You may find these useful in your journey.");
-    player.addItem(Item("Sword", "A sharp blade, useful for combat.", 10));
+    player.addItem(ItemFactory::createSword());
 
     player.showInventory();
 
