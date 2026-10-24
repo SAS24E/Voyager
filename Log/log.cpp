@@ -1,7 +1,8 @@
-#include "log.h"
+#include "Log.h"
 
 void Log::log(const std::string &message)
 {
+    if(message.empty()) return;
     for (char c : message)
     {
         std::cout << c << std::flush;

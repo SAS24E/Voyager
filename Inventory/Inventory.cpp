@@ -1,13 +1,13 @@
 #include "Inventory.h"
 #include <iostream>
 #include <algorithm>
-#include "../Log/log.h"
+#include "../Log/Log.h"
 
 
 void Inventory::addItem(const Item &item)
 {
     items.push_back(item);
-    Log::log(item.name + " was added to your inventory.");
+    Log::log(item.getName() + " was added to your inventory.");
 }
 
 void Inventory::removeItem(const std::string &itemName)
@@ -17,12 +17,12 @@ void Inventory::removeItem(const std::string &itemName)
         items.end(),
         [&itemName](const Item &item)
         {
-            return item.name == itemName;
+            return item.getName() == itemName;
         });
 
     if (item != items.end())
     {
-        std::cout << item->name << " was removed from your inventory." << std::endl;
+        std::cout << item->getName() << " was removed from your inventory." << std::endl;
         items.erase(item);
     }
 }
@@ -37,6 +37,6 @@ void Inventory::showInventory() const
     std::cout << "Your inventory contains:" << std::endl;
     for (const Item &item : items)
     {
-        std::cout << item.name << std::endl;
+        std::cout << item.getName() << std::endl;
     }
 }

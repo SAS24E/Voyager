@@ -1,54 +1,18 @@
 #pragma once
 #include <vector>
 #include <string>
+#include "../Item/Item.h"
 
-enum class ItemType
-{
-    Weapon = 0,
-    Armor,
-    Potion,
-    Miscellaneous
-};
-
-enum class ItemRarity
-{
-    Common = 0,
-    Uncommon,
-    Rare,
-    Epic,
-    Legendary
-};
-
-enum class ItemEffect
-{
-    None = 0,
-    HealthBoost,
-    ManaBoost,
-    StrengthBoost,
-    DefenseBoost
-};
-
-enum class ItemStrength
-{
-    Weak = 0,
-    Moderate,
-    Strong,
-    VeryStrong
-};
-
-struct Item
-{
-    std::string name;
-    ItemType type;
-    ItemRarity rarity;
-    ItemEffect effect;
-    ItemStrength strength;
-};
+// The idea is that Inventory will own a collection of Item objects, allowing the player to manage their items in the game. So we need to use composition to represent the relationship between Inventory and Item. The Inventory class will have a vector of Item objects as a member variable, allowing it to store and manage multiple items. This way, the Inventory class can provide methods to add, remove, and display items in the player's inventory.
 
 class Inventory
 {
 private:
     std::vector<Item> items;
+
+
+    
+
 
 public:
     Inventory() = default;

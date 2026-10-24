@@ -4,7 +4,7 @@
 #include "Utility/Utility.h"
 #include "GameEngine/GameEngine.h"
 #include "ConsoleUI/ConsoleUI.h"
-#include "Log/log.h"
+#include "Log/Log.h"
 #include <chrono>
 #include <thread>
 
@@ -27,11 +27,7 @@ int main()
     Log.log("You see a skeleton in the corner of the room.");
     Log.log("The skeleton seems to be a fallen warrior. He is holding a sword and a shield.");
     Log.log("You may find these useful in your journey.");
-    player.addItem({"Sword", ItemType::Weapon, ItemRarity::Common, ItemEffect::StrengthBoost, ItemStrength::Moderate});
-    player.addItem({"Shield", ItemType::Armor, ItemRarity::Common, ItemEffect::DefenseBoost, ItemStrength::Moderate});
-    Log.log("You also find a health potion and a mana potion in the skeletons bag.");
-    player.addItem({"Health Potion", ItemType::Potion, ItemRarity::Common, ItemEffect::HealthBoost, ItemStrength::Weak});
-    player.addItem({"Mana Potion", ItemType::Potion, ItemRarity::Common, ItemEffect::ManaBoost, ItemStrength::Weak});
+    player.addItem(Item("Sword", "A sharp blade, useful for combat.", 10));
 
     player.showInventory();
 
