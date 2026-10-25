@@ -44,3 +44,11 @@ void Log::info(const std::string &message)
     if (m_loglevel >= LevelInfo)
         std::cout << "[INFO]: " << message << std::endl;
 }
+
+void Log::onPlayerEvent(const std::string &message)
+{
+    info("Player event: " + message);
+}
+
+
+

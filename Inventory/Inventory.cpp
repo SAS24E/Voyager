@@ -7,7 +7,6 @@
 void Inventory::addItem(const Item &item)
 {
     items.push_back(item);
-    Log::log(item.getName() + " was added to your inventory.");
 }
 
 void Inventory::removeItem(const std::string &itemName)
@@ -39,4 +38,15 @@ void Inventory::showInventory() const
     {
         std::cout << item.getName() << std::endl;
     }
+}
+
+int Inventory::totalInventoryValue() const
+{
+    int totalValue = 0;
+    for (const Item &item : items)
+    {
+        totalValue += item.getValue();
+    }
+    return totalValue;
+
 }

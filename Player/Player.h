@@ -1,6 +1,8 @@
 #pragma once
+#include <vector>
 #include <string>
 #include "../Inventory/Inventory.h"
+#include "../Observer/Observer.h"
 class Player
 {
 private:
@@ -8,6 +10,8 @@ private:
     int health;
     int gold;
     Inventory inventory;
+    std::vector<Observer*> observers;
+    void notify(const std::string &message);
 
 public:
     Player();
@@ -22,4 +26,6 @@ public:
     void spendGold(int amount);
     void addItem(const Item &item);
     void removeItem(const std::string &itemName);
+    void subscribe(Observer &observer);
+    
 };

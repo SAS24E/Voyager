@@ -3,8 +3,9 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include "../Observer/Observer.h"
 
-class Log
+class Log : public Observer
 {
 public:
     enum Level
@@ -24,4 +25,6 @@ public:
     void warn(const std::string &message);
     void error(const std::string &message);
     void info(const std::string &message);
+    void onPlayerEvent(const std::string &message) override;
+
 };
