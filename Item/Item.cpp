@@ -22,5 +22,4 @@ int Item::getValue() const
 
 Item::~Item()
 {
-    std::cout << "Item:" << this->name << " destroyed: " << name << std::endl;
 }

@@ -19,10 +19,16 @@ A C++ text-based dungeon crawler built to explore and refine core C++ software a
 
 ## 🔨 Building with CMake
 
-From the repository root, configure the project in a separate build directory:
+From the repository root, configure the project in a separate build directory. Qt 6 Widgets must be installed first. On macOS with Homebrew:
 
 ```bash
-cmake -S . -B build
+brew install qt
+```
+
+Configure CMake with Homebrew's Qt installation:
+
+```bash
+cmake -S . -B build -DCMAKE_PREFIX_PATH="$(brew --prefix qt)"
 ```
 
 Build the game:

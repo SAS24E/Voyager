@@ -3,7 +3,6 @@
 #include <algorithm>
 #include "../Log/Log.h"
 
-
 void Inventory::addItem(const Item &item)
 {
     items.push_back(item);
@@ -48,5 +47,4 @@ int Inventory::totalInventoryValue() const
         totalValue += item.getValue();
     }
     return totalValue;
-
 }

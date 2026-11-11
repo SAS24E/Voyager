@@ -47,7 +47,7 @@ void Log::info(const std::string &message)
 
 void Log::onPlayerEvent(const std::string &message)
 {
-    info("Player event: " + message);
+    info("Player event: " + message + " ");
 }
 
 

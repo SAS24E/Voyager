@@ -5,12 +5,15 @@ project(Voyager
     LANGUAGES CXX
 )
 
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(Voyager
     main.cpp
+    Gui/MainWindow.cpp
     Player/Player.cpp
     Inventory/Inventory.cpp
     Utility/Utility.cpp
@@ -26,4 +29,8 @@ add_executable(Voyager
 # Root directory inclusion allows: #include "Item/Item.h", #include "Player/Player.h", etc.
 target_include_directories(Voyager PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+target_link_libraries(Voyager PRIVATE
+    Qt6::Widgets
 )
